@@ -93,88 +93,88 @@ The ${job.company.name} Hiring Team
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <button onClick={onBack} className="mb-8 inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors">
+      <button onClick={onBack} className="mb-8 inline-flex items-center gap-2 text-teal-500 hover:text-teal-600 dark:text-teal-400 dark:hover:text-teal-300 transition-colors">
         <ChevronLeftIcon />
         Back to Listings
       </button>
       <div className="lg:grid lg:grid-cols-3 lg:gap-8">
         <div className="lg:col-span-2">
-          <div className="bg-white/80 dark:bg-slate-700/80 backdrop-blur-sm p-8 rounded-xl shadow-lg">
+          <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm p-8 rounded-xl shadow-lg">
             <div className="flex items-center gap-4 mb-4">
               <img src={job.company.logo} alt={`${job.company.name} logo`} className="w-16 h-16 rounded-full object-cover"/>
               <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">{job.title}</h1>
-                <p className="text-xl text-slate-600 dark:text-slate-300">{job.company.name}</p>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{job.title}</h1>
+                <p className="text-xl text-gray-600 dark:text-gray-300">{job.company.name}</p>
               </div>
             </div>
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-slate-500 dark:text-slate-400 mb-6">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-gray-500 dark:text-gray-400 mb-6">
               <span className="flex items-center gap-2"><MapPinIcon /> {job.location}</span>
               <span className="flex items-center gap-2"><BriefcaseIcon /> {job.type}</span>
               <span className="flex items-center gap-2"><WalletIcon /> {job.salary}</span>
             </div>
             <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-white">Required Skills</h3>
+              <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Required Skills</h3>
               <div className="flex flex-wrap gap-2">
                 {job.skills.map(skill => (
-                  <span key={skill} className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">{skill}</span>
+                  <span key={skill} className="bg-teal-100 text-teal-800 text-sm font-medium px-3 py-1 rounded-full">{skill}</span>
                 ))}
               </div>
             </div>
-            <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Job Description</h2>
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Job Description</h2>
             <div className="prose prose-slate dark:prose-invert max-w-none">
               <p>{job.description}</p>
             </div>
           </div>
         </div>
         <div className="space-y-8 mt-8 lg:mt-0">
-          <div className="bg-white/80 dark:bg-slate-700/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-             <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Candidate Actions</h3>
+          <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+             <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Candidate Actions</h3>
              <div className="space-y-4">
-                 <label htmlFor="cv-upload" className="relative cursor-pointer w-full flex flex-col items-center justify-center p-4 border-2 border-dashed border-slate-300 dark:border-slate-500 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors">
-                     <div className="text-blue-500"><UploadCloudIcon /></div>
-                     <span className="font-semibold text-slate-600 dark:text-slate-300">Upload CV</span>
-                     <span className="text-xs text-slate-500 dark:text-slate-400">PDF, DOC, DOCX (Max 5MB)</span>
+                 <label htmlFor="cv-upload" className="relative cursor-pointer w-full flex flex-col items-center justify-center p-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                     <div className="text-teal-500 dark:text-teal-400"><UploadCloudIcon /></div>
+                     <span className="font-semibold text-gray-600 dark:text-gray-300">Upload CV</span>
+                     <span className="text-xs text-gray-500 dark:text-gray-400">PDF, DOC, DOCX (Max 5MB)</span>
                      <input id="cv-upload" type="file" className="sr-only" onChange={(e) => setCvFile(e.target.files ? e.target.files[0] : null)} accept=".pdf,.doc,.docx" />
                  </label>
                  {cvFile && (
-                     <div className="flex items-center justify-between text-sm bg-blue-50 dark:bg-slate-600 p-2 rounded-md">
-                         <div className="flex items-center gap-2 text-blue-800 dark:text-blue-200 truncate">
+                     <div className="flex items-center justify-between text-sm bg-teal-50 dark:bg-gray-800 p-2 rounded-md">
+                         <div className="flex items-center gap-2 text-teal-800 dark:text-teal-200 truncate">
                             <FileTextIcon />
                             <span className="truncate">{cvFile.name}</span>
                          </div>
-                         <button onClick={() => setCvFile(null)} className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">&times;</button>
+                         <button onClick={() => setCvFile(null)} className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">&times;</button>
                      </div>
                  )}
                 <div className="mt-4">
-                    <label htmlFor="github-link" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">GitHub Project (Optional)</label>
-                    <input type="text" id="github-link" placeholder="https://github.com/..." className="w-full px-3 py-2 border border-slate-300 dark:border-slate-500 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-slate-50 dark:bg-slate-600 dark:text-white"/>
+                    <label htmlFor="github-link" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">GitHub Project (Optional)</label>
+                    <input type="text" id="github-link" placeholder="https://github.com/..." className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-teal-500 focus:border-teal-500 bg-gray-50 dark:bg-gray-700 dark:text-white"/>
                 </div>
-                 <button onClick={handleApply} className="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+                 <button onClick={handleApply} className="w-full bg-teal-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-600 transition-transform transform hover:scale-105">
                     Apply Now
                 </button>
             </div>
           </div>
-          <div className="bg-white/80 dark:bg-slate-700/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-            <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">Recruiter Tools</h3>
-            <button onClick={handleBookInterview} className="w-full flex items-center justify-center gap-2 bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105">
+          <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Recruiter Tools</h3>
+            <button onClick={handleBookInterview} className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-emerald-600 transition-transform transform hover:scale-105">
                 <VideoIcon />
                 Book Introduction Interview
             </button>
           </div>
-          <div className="bg-white/80 dark:bg-slate-700/80 backdrop-blur-sm p-6 rounded-xl shadow-lg">
-            <h3 className="text-xl font-bold mb-4 text-slate-900 dark:text-white">AI-Suggested Courses</h3>
+          <div className="bg-white dark:bg-gray-900/60 backdrop-blur-sm p-6 rounded-xl shadow-lg">
+            <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">AI-Suggested Courses</h3>
             {isLoading && <div className="flex justify-center items-center h-32"><LoaderIcon /></div>}
             {error && <p className="text-red-500">{error}</p>}
             {!isLoading && !error && (
               <div className="space-y-4">
-                {courses.length > 0 ? courses.map((course, index) => <CourseCard key={index} course={course} />) : <p className="text-slate-500 dark:text-slate-400">No courses to recommend for this role.</p>}
+                {courses.length > 0 ? courses.map((course, index) => <CourseCard key={index} course={course} />) : <p className="text-gray-500 dark:text-gray-400">No courses to recommend for this role.</p>}
               </div>
             )}
           </div>
         </div>
       </div>
        <div className="mt-12">
-            <h2 className="text-2xl font-bold mb-6 text-center text-slate-900 dark:text-white">Similar Jobs You May Like</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Similar Jobs You May Like</h2>
             <div className="grid md:grid-cols-2 gap-6">
                 {similarJobs.map(job => <JobCard key={job.id} job={job} onSelectJob={() => {}} isSelected={false}/>)}
             </div>
@@ -201,11 +201,11 @@ const MainContent: React.FC<{
   return (
     <>
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-slate-800 pt-24 pb-20 sm:pt-32 sm:pb-28">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-slate-800 to-slate-800 opacity-60"></div>
+      <div className="relative overflow-hidden bg-gray-900 pt-24 pb-20 sm:pt-32 sm:pb-28">
+          <div className="absolute inset-0 bg-gradient-to-br from-teal-600/20 via-gray-900 to-gray-900"></div>
           <div className="relative container mx-auto px-4 text-center">
               <h1 className="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">Find Your Next Big Opportunity</h1>
-              <p className="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">
+              <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
                   SkillMatch connects you with top tech jobs. Showcase your skills, link your GitHub, and get AI-powered learning recommendations to boost your career.
               </p>
               <div className="mt-8 max-w-xl mx-auto">
@@ -215,9 +215,9 @@ const MainContent: React.FC<{
                           placeholder="Search for job roles, companies..."
                           value={searchTerm}
                           onChange={(e) => onSearchChange(e.target.value)}
-                          className="flex-grow px-5 py-3 rounded-lg border-2 border-transparent focus:outline-none focus:ring-4 focus:ring-blue-500/50 bg-slate-700 text-white"
+                          className="flex-grow px-5 py-3 rounded-lg border-2 border-transparent focus:outline-none focus:ring-4 focus:ring-teal-500/50 bg-gray-800 text-white"
                       />
-                      <button className="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+                      <button className="bg-teal-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-teal-600 transition-transform transform hover:scale-105">
                           Search Jobs
                       </button>
                   </div>
@@ -226,9 +226,9 @@ const MainContent: React.FC<{
       </div>
 
       {/* Categories Section */}
-      <div className="py-16 bg-white dark:bg-slate-700">
+      <div className="py-16 bg-white dark:bg-gray-900/80 backdrop-blur-sm">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-10 text-slate-900 dark:text-white">Explore by Category</h2>
+          <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">Explore by Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {['All', ...categories].map(category => {
                   const isActive = (category === 'All' && !categoryFilter) || categoryFilter === category;
@@ -238,11 +238,11 @@ const MainContent: React.FC<{
                         onClick={() => onSelectCategory(category === 'All' ? null : category as JobCategory)}
                         className={`p-6 rounded-xl text-center transition-all cursor-pointer transform hover:-translate-y-1 ${
                             isActive 
-                                ? 'bg-blue-600 text-white shadow-lg' 
-                                : 'bg-slate-100 dark:bg-slate-600 hover:bg-blue-100 dark:hover:bg-blue-900/50'
+                                ? 'bg-teal-500 text-white shadow-lg' 
+                                : 'bg-slate-100 dark:bg-gray-800 hover:bg-teal-100 dark:hover:bg-teal-900/50'
                         }`}
                       >
-                          <h3 className={`text-xl font-semibold ${isActive ? 'text-white' : 'text-slate-800 dark:text-white'}`}>{category}</h3>
+                          <h3 className={`text-xl font-semibold ${isActive ? 'text-white' : 'text-gray-800 dark:text-white'}`}>{category}</h3>
                       </div>
                   )
               })}
@@ -253,11 +253,11 @@ const MainContent: React.FC<{
       {/* Job Listings */}
       <div className="container mx-auto px-4 py-16">
         <div className="flex justify-between items-center mb-10">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Featured Job Openings</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Job Openings</h2>
             <button
                 onClick={onLoadNew}
                 disabled={isLoadingNewJobs || allJobsLoaded}
-                className="bg-blue-100 text-blue-700 font-semibold py-2 px-4 rounded-lg hover:bg-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:hover:bg-blue-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                className="bg-teal-100 text-teal-700 font-semibold py-2 px-4 rounded-lg hover:bg-teal-200 dark:bg-teal-900/50 dark:text-teal-300 dark:hover:bg-teal-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
             >
                 {isLoadingNewJobs ? (
                     <>
@@ -279,9 +279,9 @@ const MainContent: React.FC<{
       </div>
 
       {/* Featured Companies */}
-       <div className="bg-white dark:bg-slate-700 py-16">
+       <div className="bg-white dark:bg-gray-900/80 backdrop-blur-sm py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-10 text-slate-900 dark:text-white">Featured Companies</h2>
+          <h2 className="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">Featured Companies</h2>
            <div className="relative overflow-hidden">
             <div className="flex animate-scroll">
                 {[...mockCompanies, ...mockCompanies].map((company, index) => (
@@ -314,21 +314,6 @@ export default function App() {
   const [allJobsLoaded, setAllJobsLoaded] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<JobCategory | null>(null);
-
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      document.documentElement.style.setProperty('--x', `${clientX}px`);
-      document.documentElement.style.setProperty('--y', `${clientY}px`);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
 
   const handleSelectJob = (job: Job) => {
     setSelectedJob(job);
@@ -368,10 +353,26 @@ export default function App() {
   });
 
   return (
-    <div className="bg-slate-100 dark:bg-slate-800 min-h-screen text-slate-800 dark:text-slate-200 relative isolate">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_400px_at_var(--x,_50%)_var(--y,_50%),_rgba(45,150,255,0.15),_transparent)]"></div>
+    <div className="bg-slate-50 dark:bg-gray-950 min-h-screen text-gray-800 dark:text-gray-200 animated-gradient-bg">
+       <div className="dark:bg-grid-white/[0.05] bg-grid-black/[0.02] absolute inset-0"></div>
+       <style>{`
+          .animated-gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #0d9488, #1e3a8a);
+            background-size: 400% 400%;
+            animation: gradient-animation 20s ease infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+          }
+          .dark .animated-gradient-bg::before {
+            opacity: 1;
+          }
+        `}</style>
       <Header />
-      <main className="pt-20">
+      <main className="pt-20 relative z-10">
         {selectedJob ? (
           <JobDetailsView job={selectedJob} onBack={handleBack} allJobs={jobs}/>
         ) : (
